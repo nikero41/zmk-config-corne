@@ -1,0 +1,42 @@
+# AGENTS.md
+
+## Scope
+- This is a minimal ZMK user-config repo. Most changes belong in `build.yaml`, `config/corne.conf`, or `config/corne.keymap`.
+- There is no repo-local README, package manifest, test/lint/typecheck/formatter config, or task runner. Verification is firmware build only.
+
+## Build Truth
+- `.github/workflows/build.yml` only delegates to `zmkfirmware/zmk/.github/workflows/build-user-config.yml@main`. Change `build.yaml`, not the workflow file, when you need different firmware outputs.
+- `config/west.yml` tracks `zmk` at `revision: main`, not a pinned release. A new build failure may be upstream ZMK breakage.
+- `build.yaml` is the source of truth for active targets. The repo currently builds:
+  - left: `nice_nano_v2` + `corne_left nice_view_adapter nice_view` + `studio-rpc-usb-uart`
+  - right: `nice_nano_v2` + `corne_right nice_view_adapter nice_view`
+- In `build.yaml`, `shield:` is one space-delimited string consumed by `-DSHIELD="..."`; do not convert it to a YAML list.
+- `config/corne.conf` enables `CONFIG_ZMK_STUDIO=y`, but only the left target adds the `studio-rpc-usb-uart` snippet. Keep both files aligned when changing Studio support.
+- `zephyr/module.yml` is required. It makes the repo load as an extra Zephyr module with `board_root: .`; removing it breaks manual/CI builds that rely on `-DZMK_EXTRA_MODULES=<repo-root>`.
+
+## Local Build
+- Do not run `west init` in the repo root unless you want `zmk/`, `zephyr/`, `modules/`, and related workspace state created inside this repo. CI avoids that by copying `config/` into a temporary workspace first.
+- CI-style local repro after installing the ZMK/Zephyr toolchain:
+
+```sh
+REPO=/path/to/zmk-config-corne
+tmpdir="$(mktemp -d)"
+mkdir -p "$tmpdir/config"
+cp -R "$REPO/config/." "$tmpdir/config/"
+
+# Run the remaining commands with workdir=$tmpdir
+west init -l config
+west update --fetch-opt=--filter=tree:0
+west zephyr-export
+west build -s zmk/app -d build-left -b nice_nano_v2 -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+```
+
+- Quote `-DSHIELD="..."`; both shield values contain spaces.
+
+## Keymap
+- `config/corne.keymap` layer constants are `BASE=0`, `SYMBOLS=1`, `MISC=2`, `FUNCTIONS=3`, `LOL=4`.
+- The `SYMBOLS` constant points to the node named `numpad`; search by `SYMBOLS` or `&mo SYMBOLS`, not for a `symbols {}` node.
+- `FUNCTIONS` is a conditional tri-layer enabled by `SYMBOLS + MISC`.
+- Custom behaviors `ht` and `captap` are defined inline near the top of `config/corne.keymap`; update those definitions in place instead of replacing them with guessed stock behavior names.
+- Pointing support is intentional: `config/corne.conf` enables `CONFIG_ZMK_POINTING*`, and the `functions` layer uses `&mmv`, `&msc`, and `&mkp` bindings.
