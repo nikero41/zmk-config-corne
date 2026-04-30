@@ -48,6 +48,66 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_left_brace {
+            timeout-ms = <50>;
+            key-positions = <3 15>;
+            bindings = <&kp LEFT_BRACE>;
+            layers = <BASE>;
+        };
+
+        combo_right_brace {
+            timeout-ms = <50>;
+            key-positions = <4 16>;
+            bindings = <&kp RIGHT_BRACE>;
+            layers = <BASE>;
+        };
+
+        combo_left_paren {
+            timeout-ms = <50>;
+            key-positions = <15 27>;
+            bindings = <&kp LEFT_PARENTHESIS>;
+            layers = <BASE>;
+        };
+
+        combo_right_paren {
+            timeout-ms = <50>;
+            key-positions = <16 28>;
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            layers = <BASE>;
+        };
+
+        combo_ampersand {
+            timeout-ms = <50>;
+            key-positions = <18 30>;
+            bindings = <&kp AMPS>;
+            layers = <BASE>;
+        };
+
+        combo_ampersand_top {
+            timeout-ms = <50>;
+            key-positions = <3 4>;
+            bindings = <&kp AMPS>;
+            layers = <BASE>;
+        };
+
+        combo_underscore {
+            timeout-ms = <50>;
+            key-positions = <18 19>;
+            bindings = <&kp UNDERSCORE>;
+            layers = <BASE>;
+        };
+
+        combo_underscore_bottom {
+            timeout-ms = <50>;
+            key-positions = <31 32>;
+            bindings = <&kp UNDERSCORE>;
+            layers = <BASE>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
