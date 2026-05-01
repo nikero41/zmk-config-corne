@@ -1,10 +1,10 @@
 # ZMK Corne Config
 
-Personal ZMK user-config repo for a wireless Corne built with `nice_nano_v2` controllers and `nice_view` displays.
+Personal ZMK user-config repo for a wireless Corne built with nice!nano v2 controllers and `nice_view` displays.
 
 ## Hardware Targets
 
-- Board: `nice_nano_v2`
+- Board: `nice_nano@2.0.0//zmk` (nice!nano v2 on current ZMK `main`)
 - Left shield: `corne_left nice_view_adapter nice_view`
 - Right shield: `corne_right nice_view_adapter nice_view`
 - ZMK Studio over USB is enabled on the left build via the `studio-rpc-usb-uart` snippet.
@@ -76,20 +76,21 @@ cp -R "$REPO/config/." "$tmpdir/config/"
 west init -l config
 west update --fetch-opt=--filter=tree:0
 west zephyr-export
-west build -s zmk/app -d build-left -b nice_nano_v2 -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
-west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-left -b nice_nano@2.0.0//zmk -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-right -b nice_nano@2.0.0//zmk -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
 ```
 
 Notes:
 
 - `config/west.yml` tracks ZMK `main`, so a new build failure can be caused by upstream changes.
+- On current `main`, ZMK boards use versioned IDs plus the `zmk` variant. The old `nice_nano_v2` board ID no longer builds.
 - `zephyr/module.yml` and `-DZMK_EXTRA_MODULES="$REPO"` are required so the repo is loaded as an extra Zephyr module.
 - Quote `-DSHIELD="..."` because the shield values contain spaces.
 
 ## Flashing
 
-- Flash the left UF2 to the left `nice_nano_v2`
-- Flash the right UF2 to the right `nice_nano_v2`
+- Flash the left UF2 to the left nice!nano v2 controller
+- Flash the right UF2 to the right nice!nano v2 controller
 - Use the left build if you want ZMK Studio over USB
 
 ## Customization
