@@ -2,7 +2,7 @@
 
 ## Scope
 - This is a minimal ZMK user-config repo. Most changes belong in `build.yaml`, `config/corne.conf`, or `config/corne.keymap`.
-- There is no repo-local README, package manifest, test/lint/typecheck/formatter config, or task runner. Verification is firmware build only.
+- Verification is firmware build only; the repo has no repo-local test/lint/typecheck/formatter or task-runner config.
 
 ## Build Truth
 - `.github/workflows/build.yml` only delegates to `zmkfirmware/zmk/.github/workflows/build-user-config.yml@main`. Change `build.yaml`, not the workflow file, when you need different firmware outputs.
@@ -38,5 +38,8 @@ west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG="$tmpdir/co
 - `config/corne.keymap` layer constants are `BASE=0`, `SYMBOLS=1`, `MISC=2`, `FUNCTIONS=3`, `LOL=4`.
 - The `SYMBOLS` constant points to the node named `numpad`; search by `SYMBOLS` or `&mo SYMBOLS`, not for a `symbols {}` node.
 - `FUNCTIONS` is a conditional tri-layer enabled by `SYMBOLS + MISC`.
-- Custom behaviors `ht` and `captap` are defined inline near the top of `config/corne.keymap`; update those definitions in place instead of replacing them with guessed stock behavior names.
+- `hml` and `hmr` are the timeless HRM behaviors used on `S`, `D`, `G`, `H`, `L`, and `'`. `Z` intentionally stays `&ht LCTRL Z`, and `/` intentionally stays `&mt RCTRL SLASH`, to preserve same-hand Ctrl shortcuts.
+- `KEYS_L`, `KEYS_R`, and `THUMBS` drive the positional HRM logic, and the combo `key-positions` assume the current 42-key ordering. If you move alpha or thumb bindings, update those positions too.
+- The `combos` block is `layers = <BASE>` only; brace/paren/ampersand/underscore combos do not fire on `LOL` unless you extend them intentionally.
+- Custom behaviors `ht`, `hml`, `hmr`, and `captap` are defined inline near the top of `config/corne.keymap`; update those definitions in place instead of replacing them with guessed stock behavior names.
 - Pointing support is intentional: `config/corne.conf` enables `CONFIG_ZMK_POINTING*`, and the `functions` layer uses `&mmv`, `&msc`, and `&mkp` bindings.
