@@ -15,6 +15,25 @@
 #define FUNCTIONS 3
 #define LOL 4
 
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+#define THUMBS 36 37 38 39 40 41
+#define COMBO_TIMEOUT 50
+
+/* Base layer positions used by combos: top row 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H; bottom row 27=C 28=V 30=N 31=M 32=, */
+#define POS_E 3
+#define POS_R 4
+#define POS_U 7
+#define POS_I 8
+#define POS_D 15
+#define POS_F 16
+#define POS_H 18
+#define POS_C 27
+#define POS_V 28
+#define POS_N 30
+#define POS_M 31
+#define POS_COMMA 32
+
 &caps_word {
     continue-list = <UNDERSCORE BACKSPACE DELETE MINUS>;
 };
@@ -52,43 +71,43 @@
         compatible = "zmk,combos";
 
         combo_left_brace {
-            timeout-ms = <50>;
-            key-positions = <3 15>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_E POS_D>;
             bindings = <&kp LEFT_BRACE>;
             layers = <BASE>;
         };
 
         combo_right_brace {
-            timeout-ms = <50>;
-            key-positions = <4 16>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_R POS_F>;
             bindings = <&kp RIGHT_BRACE>;
             layers = <BASE>;
         };
 
         combo_left_paren {
-            timeout-ms = <50>;
-            key-positions = <15 27>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_D POS_C>;
             bindings = <&kp LEFT_PARENTHESIS>;
             layers = <BASE>;
         };
 
         combo_right_paren {
-            timeout-ms = <50>;
-            key-positions = <16 28>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_F POS_V>;
             bindings = <&kp RIGHT_PARENTHESIS>;
             layers = <BASE>;
         };
 
         combo_ampersand {
-            timeout-ms = <50>;
-            key-positions = <18 30>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_H POS_N>;
             bindings = <&kp AMPS>;
             layers = <BASE>;
         };
 
         combo_ampersand_top {
-            timeout-ms = <50>;
-            key-positions = <3 4>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_E POS_R>;
             bindings = <&kp AMPS>;
             layers = <BASE>;
         };
@@ -101,8 +120,8 @@
         };
 
         combo_underscore_bottom {
-            timeout-ms = <50>;
-            key-positions = <31 32>;
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_M POS_COMMA>;
             bindings = <&kp UNDERSCORE>;
             layers = <BASE>;
         };
