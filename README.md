@@ -4,7 +4,7 @@ Personal ZMK user-config repo for a wireless Corne built with nice!nano v2 contr
 
 ## Hardware Targets
 
-- Board: `nice_nano@2.0.0//zmk` (nice!nano v2 on current ZMK `main`)
+- Board: `nice_nano_v2` (nice!nano v2 on ZMK `v0.3`)
 - Left shield: `corne_left nice_view_adapter nice_view`
 - Right shield: `corne_right nice_view_adapter nice_view`
 - ZMK Studio over USB is enabled on the left build via the `studio-rpc-usb-uart` snippet.
@@ -40,14 +40,15 @@ Personal ZMK user-config repo for a wireless Corne built with nice!nano v2 contr
 - `D + C` -> `(`
 - `F + V` -> `)`
 - `H + N` or `E + R` -> `&`
-- `H + J` or `M + ,` -> `_`
+- `U + I` -> `-`
+- `M + ,` -> `_`
 
 ## Repository Layout
 
 - `build.yaml`: active firmware targets for CI builds
 - `config/corne.conf`: Kconfig options such as BLE, battery, pointing, split, and Studio
 - `config/corne.keymap`: layers, behaviors, combos, and bindings
-- `config/west.yml`: upstream ZMK manifest, currently tracking `main`
+- `config/west.yml`: upstream ZMK manifest, pinned to the `v0.3` release line
 - `zephyr/module.yml`: makes this repo load as an extra Zephyr module during builds
 
 ## Building Firmware
@@ -76,14 +77,14 @@ cp -R "$REPO/config/." "$tmpdir/config/"
 west init -l config
 west update --fetch-opt=--filter=tree:0
 west zephyr-export
-west build -s zmk/app -d build-left -b nice_nano@2.0.0//zmk -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
-west build -s zmk/app -d build-right -b nice_nano@2.0.0//zmk -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-left -b nice_nano_v2 -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
 ```
 
 Notes:
 
-- `config/west.yml` tracks ZMK `main`, so a new build failure can be caused by upstream changes.
-- On current `main`, ZMK boards use versioned IDs plus the `zmk` variant. The old `nice_nano_v2` board ID no longer builds.
+- `config/west.yml` is pinned to ZMK `v0.3`, and `.github/workflows/build.yml` follows the same release line.
+- If you choose to upgrade to the next minor release later, expect to revisit the board ID because newer ZMK versions move nice!nano v2 to the revisioned `nice_nano@2.0.0//zmk` form.
 - `zephyr/module.yml` and `-DZMK_EXTRA_MODULES="$REPO"` are required so the repo is loaded as an extra Zephyr module.
 - Quote `-DSHIELD="..."` because the shield values contain spaces.
 

@@ -5,12 +5,12 @@
 - Verification is firmware build only; the repo has no repo-local test/lint/typecheck/formatter or task-runner config.
 
 ## Build Truth
-- `.github/workflows/build.yml` only delegates to `zmkfirmware/zmk/.github/workflows/build-user-config.yml@main`. Change `build.yaml`, not the workflow file, when you need different firmware outputs.
-- `config/west.yml` tracks `zmk` at `revision: main`, not a pinned release. A new build failure may be upstream ZMK breakage.
-- Current `main` uses Zephyr 4.1 board variants. `nice_nano_v2` is removed; use the versioned ZMK board ID `nice_nano@2.0.0//zmk` for this repo's nice!nano v2 targets.
+- `.github/workflows/build.yml` delegates to `zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3`. Change `build.yaml`, not the workflow file, when you need different firmware outputs.
+- `config/west.yml` pins `zmk` to `revision: v0.3`, which follows the latest patch release within the v0.3 minor line.
+- On `v0.3`, this repo uses the stable board ID `nice_nano_v2` for nice!nano v2 targets. The versioned ZMK board ID `nice_nano@2.0.0//zmk` applies to newer ZMK versions, not this pinned release.
 - `build.yaml` is the source of truth for active targets. The repo currently builds:
-  - left: `nice_nano@2.0.0//zmk` + `corne_left nice_view_adapter nice_view` + `studio-rpc-usb-uart`
-  - right: `nice_nano@2.0.0//zmk` + `corne_right nice_view_adapter nice_view`
+- left: `nice_nano_v2` + `corne_left nice_view_adapter nice_view` + `studio-rpc-usb-uart`
+- right: `nice_nano_v2` + `corne_right nice_view_adapter nice_view`
 - In `build.yaml`, `shield:` is one space-delimited string consumed by `-DSHIELD="..."`; do not convert it to a YAML list.
 - `config/corne.conf` enables `CONFIG_ZMK_STUDIO=y`, but only the left target adds the `studio-rpc-usb-uart` snippet. Keep both files aligned when changing Studio support.
 - `zephyr/module.yml` is required. It makes the repo load as an extra Zephyr module with `board_root: .`; removing it breaks manual/CI builds that rely on `-DZMK_EXTRA_MODULES=<repo-root>`.
@@ -29,8 +29,8 @@ cp -R "$REPO/config/." "$tmpdir/config/"
 west init -l config
 west update --fetch-opt=--filter=tree:0
 west zephyr-export
-west build -s zmk/app -d build-left -b nice_nano@2.0.0//zmk -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
-west build -s zmk/app -d build-right -b nice_nano@2.0.0//zmk -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-left -b nice_nano_v2 -S studio-rpc-usb-uart -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
+west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG="$tmpdir/config" -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES="$REPO"
 ```
 
 - Quote `-DSHIELD="..."`; both shield values contain spaces.
