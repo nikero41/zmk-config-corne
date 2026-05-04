@@ -112,10 +112,10 @@
             layers = <BASE>;
         };
 
-        combo_underscore {
-            timeout-ms = <50>;
-            key-positions = <18 19>;
-            bindings = <&kp UNDERSCORE>;
+        combo_minus {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_U POS_I>;
+            bindings = <&kp MINUS>;
             layers = <BASE>;
         };
 
