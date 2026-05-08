@@ -17,7 +17,7 @@
 
 #define COMBO_TIMEOUT 50
 
-/* Base layer positions used by combos: top row 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H; bottom row 27=C 28=V 30=N 31=M 32=, */
+/* Base layer positions used by combos: top row 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H 19=J; bottom row 27=C 28=V 30=N 31=M 32=, */
 #define POS_E 3
 #define POS_R 4
 #define POS_U 7
@@ -25,6 +25,7 @@
 #define POS_D 15
 #define POS_F 16
 #define POS_H 18
+#define POS_J 19
 #define POS_C 27
 #define POS_V 28
 #define POS_N 30
@@ -115,6 +116,13 @@
         combo_ampersand_top {
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <POS_E POS_R>;
+            bindings = <&kp AMPS>;
+            layers = <BASE>;
+        };
+
+        combo_ampersand_home {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_H POS_J>;
             bindings = <&kp AMPS>;
             layers = <BASE>;
         };
