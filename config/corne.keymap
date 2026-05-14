@@ -106,20 +106,6 @@
             layers = <BASE>;
         };
 
-        combo_ampersand {
-            timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_H POS_N>;
-            bindings = <&kp AMPS>;
-            layers = <BASE>;
-        };
-
-        combo_ampersand_top {
-            timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_E POS_R>;
-            bindings = <&kp AMPS>;
-            layers = <BASE>;
-        };
-
         combo_ampersand_home {
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <POS_H POS_J>;
