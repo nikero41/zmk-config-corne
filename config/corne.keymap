@@ -142,19 +142,19 @@
         base {
             display-name = "base";
             bindings = <
-//    ┌─────┬────────────┬────────────┬────────────┬───────────────────┬────────────┐   ┌────────────┬─────────────────────────────────────────────────────┬─────────┬────────────┬───────────┬────────────┐
-//    │ tab │     Q      │     W      │     E      │         R         │     T      │   │     Y      │                          U                          │    I    │     O      │     P     │     \      │
-//    ├─────┼────────────┼────────────┼────────────┼───────────────────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┼───────────┼────────────┤
-//    │ esc │     A      │ &ht lsft S │ &ht lgui D │         F         │ &ht lalt G │   │ &ht lalt H │                          J                          │    K    │ &ht rsft L │ lt MISC ; │ &ht rgui ' │
-//    ├─────┼────────────┼────────────┼────────────┼───────────────────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┼───────────┼────────────┤
-//    │  =  │ &ht lctl Z │     X      │     C      │         V         │     B      │   │     N      │                          M                          │    ,    │     .      │ mt rctl / │     -      │
-//    └─────┴────────────┴────────────┼────────────┼───────────────────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┴───────────┴────────────┘
-//                                    │  mo MISC   │ lt SYMBOlsft bspc │    spc     │   │    ent     │ &symbols_hold_double_tap_toggle SYMBOlsft SYMBOlsft │ &captap │
-//                                    └────────────┴───────────────────┴────────────┘   └────────────┴─────────────────────────────────────────────────────┴─────────┘
-  &kp TAB      &kp Q         &kp W              &kp E            &kp R              &kp T                &kp Y        &kp U                                             &kp I       &kp O               &kp P             &kp BACKSLASH
-  &kp ESCAPE   &kp A         &ht LEFT_SHIFT S   &ht LEFT_GUI D   &kp F              &ht LEFT_ALT G       &ht LALT H   &kp J                                             &kp K       &ht RIGHT_SHIFT L   &lt MISC SEMI     &ht RIGHT_GUI SQT
-  &kp EQUAL    &ht LCTRL Z   &kp X              &kp C            &kp V              &kp B                &kp N        &kp M                                             &kp COMMA   &kp DOT             &mt RCTRL SLASH   &kp MINUS
-                                                &mo MISC         &lt SYMBOLS BSPC   &kp SPACE            &kp RET      &symbols_hold_double_tap_toggle SYMBOLS SYMBOLS   &captap
+//    ┌─────┬────────────┬────────────┬────────────┬──────┬────────────┐   ┌────────────┬─────────────────────────────────────────────────────┬─────────┬────────────┬───────────┬────────────┐
+//    │ tab │     Q      │     W      │     E      │  R   │     T      │   │     Y      │                          U                          │    I    │     O      │     P     │     \      │
+//    ├─────┼────────────┼────────────┼────────────┼──────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┼───────────┼────────────┤
+//    │ esc │     A      │ &ht lsft S │ &ht lgui D │  F   │ &ht lalt G │   │ &ht lalt H │                          J                          │    K    │ &ht rsft L │ lt MISC ; │ &ht rgui ' │
+//    ├─────┼────────────┼────────────┼────────────┼──────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┼───────────┼────────────┤
+//    │  =  │ &ht lctl Z │     X      │     C      │  V   │     B      │   │     N      │                          M                          │    ,    │     .      │ mt rctl / │     -      │
+//    └─────┴────────────┴────────────┼────────────┼──────┼────────────┤   ├────────────┼─────────────────────────────────────────────────────┼─────────┼────────────┴───────────┴────────────┘
+//                                    │  mo MISC   │ bspc │    spc     │   │    ent     │ &symbols_hold_double_tap_toggle SYMBOlsft SYMBOlsft │ &captap │
+//                                    └────────────┴──────┴────────────┘   └────────────┴─────────────────────────────────────────────────────┴─────────┘
+  &kp TAB      &kp Q         &kp W              &kp E            &kp R      &kp T                &kp Y        &kp U                                             &kp I       &kp O               &kp P             &kp BACKSLASH
+  &kp ESCAPE   &kp A         &ht LEFT_SHIFT S   &ht LEFT_GUI D   &kp F      &ht LEFT_ALT G       &ht LALT H   &kp J                                             &kp K       &ht RIGHT_SHIFT L   &lt MISC SEMI     &ht RIGHT_GUI SQT
+  &kp EQUAL    &ht LCTRL Z   &kp X              &kp C            &kp V      &kp B                &kp N        &kp M                                             &kp COMMA   &kp DOT             &mt RCTRL SLASH   &kp MINUS
+                                                &mo MISC         &kp BSPC   &kp SPACE            &kp RET      &symbols_hold_double_tap_toggle SYMBOLS SYMBOLS   &captap
             >;
         };
 
