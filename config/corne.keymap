@@ -32,6 +32,10 @@
 #define POS_M 31
 #define POS_COMMA 32
 
+/* LOL layer positions used by combos: top row 1=N1; home row 17=T */
+#define LOL_POS_N1 1
+#define LOL_POS_T 17
+
 &caps_word {
     continue-list = <UNDERSCORE BACKSPACE DELETE MINUS>;
 };
@@ -134,6 +138,13 @@
             bindings = <&kp UNDERSCORE>;
             layers = <BASE>;
         };
+
+        combo_lol_n1_t_p {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <LOL_POS_N1 LOL_POS_T>;
+            bindings = <&kp P>;
+            layers = <LOL>;
+        };
     };
 
     keymap {
@@ -218,19 +229,19 @@
         lol {
             display-name = "lol";
             bindings = <
-//    ┌─────┬───┬───┬─────────┬──────┬─────┐   ┌────────────┬─────────┬────┬────────────┬───────────┬────────────┐
-//    │  =  │ 1 │ 2 │    3    │  4   │  5  │   │     Y      │    U    │ I  │     O      │     P     │     \      │
-//    ├─────┼───┼───┼─────────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
-//    │ tab │ Q │ W │    E    │  R   │  T  │   │ &ht lalt H │    J    │ K  │ &ht rsft L │ lt MISC ; │ &ht rgui ' │
-//    ├─────┼───┼───┼─────────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
-//    │ esc │ G │ S │    D    │  F   │  B  │   │     N      │    M    │ ,  │     .      │ mt rctl / │     -      │
-//    └─────┴───┴───┼─────────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┴───────────┴────────────┘
-//                  │ mo lalt │ lctl │ spc │   │    ent     │ tog LOL │ f9 │
-//                  └─────────┴──────┴─────┘   └────────────┴─────────┴────┘
+//    ┌─────┬───┬───┬──────┬──────┬─────┐   ┌────────────┬─────────┬────┬────────────┬───────────┬────────────┐
+//    │  =  │ 1 │ 2 │  3   │  4   │  5  │   │     Y      │    U    │ I  │     O      │     P     │     \      │
+//    ├─────┼───┼───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
+//    │ tab │ Q │ W │  E   │  R   │  T  │   │ &ht lalt H │    J    │ K  │ &ht rsft L │ lt MISC ; │ &ht rgui ' │
+//    ├─────┼───┼───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
+//    │ esc │ G │ S │  D   │  F   │  B  │   │     N      │    M    │ ,  │     .      │ mt rctl / │     -      │
+//    └─────┴───┴───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┴───────────┴────────────┘
+//                  │ lalt │ lctl │ spc │   │    ent     │ tog LOL │ f9 │
+//                  └──────┴──────┴─────┘   └────────────┴─────────┴────┘
   &kp EQUAL   &kp N1   &kp N2   &kp N3         &kp N4      &kp N5          &kp Y        &kp U      &kp I       &kp O               &kp P             &kp BACKSLASH
   &kp TAB     &kp Q    &kp W    &kp E          &kp R       &kp T           &ht LALT H   &kp J      &kp K       &ht RIGHT_SHIFT L   &lt MISC SEMI     &ht RIGHT_GUI SQT
   &kp ESC     &kp G    &kp S    &kp D          &kp F       &kp B           &kp N        &kp M      &kp COMMA   &kp DOT             &mt RCTRL SLASH   &kp MINUS
-                                &mo LEFT_ALT   &kp LCTRL   &kp SPACE       &kp RET      &tog LOL   &kp F9
+                                &kp LEFT_ALT   &kp LCTRL   &kp SPACE       &kp RET      &tog LOL   &kp F9
             >;
         };
     };
