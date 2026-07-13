@@ -192,7 +192,7 @@
             display-name = "misc";
             bindings = <
 //    ┌─────┬──────────┬──────────┬──────────┬──────────┬──────────┐   ┌──────┬──────┬──────┬──────┬─────┬─────┐
-//    │     │ bt_sel 0 │ bt_sel 1 │ bt_sel 2 │ bt_sel 4 │ bt_sel 5 │   │      │ volu │ vold │ mute │     │     │
+//    │     │ bt_sel 0 │ bt_sel 1 │ bt_sel 2 │ bt_sel 3 │ bt_sel 4 │   │      │ volu │ vold │ mute │     │     │
 //    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
 //    │     │          │          │          │          │ out_ tog │   │ left │ down │  up  │ rght │     │     │
 //    ├─────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
@@ -200,7 +200,7 @@
 //    └─────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────┼──────┼──────┼──────┴─────┴─────┘
 //                                │          │          │          │   │      │      │      │
 //                                └──────────┴──────────┴──────────┘   └──────┴──────┴──────┘
-  &trans   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   ebt BT_SEL 4       &trans     &kp C_VOLUME_UP   &kp C_VOLUME_DOWN   &kp K_MUTE   &trans   &trans
+  &trans   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4       &trans     &kp C_VOLUME_UP   &kp C_VOLUME_DOWN   &kp K_MUTE   &trans   &trans
   &trans   &trans         &trans         &trans         &trans         &out OUT_TOG       &kp LEFT   &kp DOWN          &kp UP              &kp RIGHT    &trans   &trans
   &trans   &trans         &trans         &trans         &trans         &bt BT_CLR         &trans     &kp C_PREVIOUS    &kp K_PLAY_PAUSE    &kp C_NEXT   &trans   &trans
                                          &trans         &trans         &trans             &trans     &trans            &trans
