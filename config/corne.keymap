@@ -17,7 +17,7 @@
 
 #define COMBO_TIMEOUT 50
 
-/* Base layer positions used by combos: top row 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H 19=J; bottom row 27=C 28=V 30=N 31=M 32=, */
+/* Base layer positions used by combos: top row 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H 19=J; bottom row 27=C 28=V 30=N 31=M 32=, thumbs 37=BSPC 39=RET. */
 #define POS_E 3
 #define POS_R 4
 #define POS_U 7
@@ -31,6 +31,8 @@
 #define POS_N 30
 #define POS_M 31
 #define POS_COMMA 32
+#define POS_BSPC 37
+#define POS_RET 39
 
 /* LOL layer positions used by combos: top row 1=N1; home row 17=T */
 #define LOL_POS_N1 1
@@ -136,6 +138,13 @@
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <POS_M POS_COMMA>;
             bindings = <&kp UNDERSCORE>;
+            layers = <BASE>;
+        };
+
+        combo_globe {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <POS_BSPC POS_RET>;
+            bindings = <&kp GLOBE>;
             layers = <BASE>;
         };
 
