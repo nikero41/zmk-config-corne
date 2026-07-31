@@ -238,19 +238,19 @@
         lol {
             display-name = "lol";
             bindings = <
-//    ┌─────┬───┬───┬──────┬──────┬─────┐   ┌────────────┬─────────┬────┬────────────┬───────────┬────────────┐
-//    │  =  │ 1 │ 2 │  3   │  4   │  5  │   │     Y      │    U    │ I  │     O      │     P     │     \      │
-//    ├─────┼───┼───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
-//    │ tab │ Q │ W │  E   │  R   │  T  │   │ &ht lalt H │    J    │ K  │ &ht rsft L │ lt MISC ; │ &ht rgui ' │
-//    ├─────┼───┼───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┼───────────┼────────────┤
-//    │ esc │ G │ S │  D   │  F   │  B  │   │     N      │    M    │ ,  │     .      │ mt rctl / │     -      │
-//    └─────┴───┴───┼──────┼──────┼─────┤   ├────────────┼─────────┼────┼────────────┴───────────┴────────────┘
-//                  │ lalt │ lctl │ spc │   │    ent     │ tog LOL │ f9 │
-//                  └──────┴──────┴─────┘   └────────────┴─────────┴────┘
-  &kp EQUAL   &kp N1   &kp N2   &kp N3         &kp N4      &kp N5          &kp Y        &kp U      &kp I       &kp O               &kp P             &kp BACKSLASH
-  &kp TAB     &kp Q    &kp W    &kp E          &kp R       &kp T           &ht LALT H   &kp J      &kp K       &ht RIGHT_SHIFT L   &lt MISC SEMI     &ht RIGHT_GUI SQT
-  &kp ESC     &kp G    &kp S    &kp D          &kp F       &kp B           &kp N        &kp M      &kp COMMA   &kp DOT             &mt RCTRL SLASH   &kp MINUS
-                                &kp LEFT_ALT   &kp LCTRL   &kp SPACE       &kp RET      &tog LOL   &kp F9
+//    ┌─────┬───┬───┬──────┬──────┬─────┐   ┌─────┬─────────┬─────┬─────┬─────┬─────┐
+//    │  =  │ 1 │ 2 │  3   │  4   │  5  │   │     │         │     │     │     │     │
+//    ├─────┼───┼───┼──────┼──────┼─────┤   ├─────┼─────────┼─────┼─────┼─────┼─────┤
+//    │ tab │ Q │ W │  E   │  R   │  T  │   │     │         │     │     │     │     │
+//    ├─────┼───┼───┼──────┼──────┼─────┤   ├─────┼─────────┼─────┼─────┼─────┼─────┤
+//    │ esc │ G │ S │  D   │  F   │  B  │   │     │         │     │     │     │     │
+//    └─────┴───┴───┼──────┼──────┼─────┤   ├─────┼─────────┼─────┼─────┴─────┴─────┘
+//                  │ lalt │ lctl │ spc │   │     │ tog LOL │ f9  │
+//                  └──────┴──────┴─────┘   └─────┴─────────┴─────┘
+  &kp EQUAL   &kp N1   &kp N2   &kp N3         &kp N4      &kp N5          &trans   &trans     &trans   &trans   &trans   &trans
+  &kp TAB     &kp Q    &kp W    &kp E          &kp R       &kp T           &trans   &trans     &trans   &trans   &trans   &trans
+  &kp ESC     &kp G    &kp S    &kp D          &kp F       &kp B           &trans   &trans     &trans   &trans   &trans   &trans
+                                &kp LEFT_ALT   &kp LCTRL   &kp SPACE       &trans   &tog LOL   &kp F9
             >;
         };
     };
