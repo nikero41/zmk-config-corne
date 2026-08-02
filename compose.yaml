@@ -1,0 +1,28 @@
+services:
+  build:
+    image: zmkfirmware/zmk-build-arm:3.5
+    platform: linux/amd64
+    working_dir: /workspaces
+    volumes:
+      # Keep the downloaded ZMK/Zephyr workspace outside the config repository.
+      - zmk-workspace:/workspaces
+      - ./config:/workspaces/config:ro
+      - ./:/modules/user-config:ro
+      - ./firmware:/output
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        if [ ! -d .west ]; then
+          west init -l config
+        fi
+        west update --fetch-opt=--filter=tree:0
+        west zephyr-export
+        rm -rf build-left build-right
+        west build -s zmk/app -d build-left -b nice_nano_v2 -- -DZMK_CONFIG=/workspaces/config -DSHIELD="corne_left nice_view_adapter nice_view" -DZMK_EXTRA_MODULES=/modules/user-config
+        west build -s zmk/app -d build-right -b nice_nano_v2 -- -DZMK_CONFIG=/workspaces/config -DSHIELD="corne_right nice_view_adapter nice_view" -DZMK_EXTRA_MODULES=/modules/user-config
+        cp build-left/zephyr/zmk.uf2 /output/corne-left.uf2
+        cp build-right/zephyr/zmk.uf2 /output/corne-right.uf2
+
+volumes:
+  zmk-workspace:
