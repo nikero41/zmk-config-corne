@@ -15,7 +15,7 @@
 #define FUNCTIONS 3
 #define LOL 4
 
-#define COMBO_TIMEOUT 50
+#define COMBO_TIMEOUT 70
 
 /* Base layer positions used by combos: top row 1=Q 2=W 3=E 4=R 7=U 8=I; home row 15=D 16=F 18=H 19=J; bottom row 27=C 28=V 30=N 31=M 32=,. */
 #define POS_Q 1
@@ -181,19 +181,19 @@
         numpad {
             display-name = "numpad";
             bindings = <
-//    ┌─────┬───┬───┬─────┬─────┬─────┐   ┌─────┬─────┬───┬───┬───┬─────┐
-//    │     │ ! │ @ │  {  │  }  │  |  │   │     │  7  │ 8 │ 9 │ * │     │
-//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┼───┼─────┤
-//    │     │ # │ $ │  (  │  )  │  `  │   │     │  4  │ 5 │ 6 │ + │     │
-//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┼───┼─────┤
-//    │     │ % │ ^ │  [  │  ]  │  ~  │   │  &  │  1  │ 2 │ 3 │ , │     │
-//    └─────┴───┴───┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┴───┴─────┘
-//                  │     │     │     │   │     │     │ 0 │
-//                  └─────┴─────┴─────┘   └─────┴─────┴───┘
-  &trans   &kp EXCL      &kp AT       &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp PIPE        &trans     &kp N7   &kp N8   &kp N9   &kp STAR    &trans
-  &trans   &kp POUND     &kp DOLLAR   &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &kp GRAVE       &trans     &kp N4   &kp N5   &kp N6   &kp PLUS    &trans
-  &trans   &kp PERCENT   &kp CARET    &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &kp TILDE       &kp AMPS   &kp N1   &kp N2   &kp N3   &kp COMMA   &trans
-                                      &trans                 &trans                  &trans          &trans     &trans   &kp N0
+//    ┌─────┬───┬───┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬───┬───┬─────┐
+//    │     │ ! │ @ │  {  │  }  │  |  │   │  +  │  7  │  8  │ 9 │ * │     │
+//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
+//    │     │ # │ $ │  (  │  )  │  `  │   │  0  │  4  │  5  │ 6 │ , │     │
+//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
+//    │     │ % │ ^ │  [  │  ]  │  ~  │   │  -  │  1  │  2  │ 3 │ / │     │
+//    └─────┴───┴───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┴───┴─────┘
+//                  │     │     │     │   │     │     │     │
+//                  └─────┴─────┴─────┘   └─────┴─────┴─────┘
+  &trans   &kp EXCL      &kp AT       &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp PIPE        &kp PLUS    &kp N7   &kp N8   &kp N9   &kp STAR    &trans
+  &trans   &kp POUND     &kp DOLLAR   &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &kp GRAVE       &kp N0      &kp N4   &kp N5   &kp N6   &kp COMMA   &trans
+  &trans   &kp PERCENT   &kp CARET    &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &kp TILDE       &kp MINUS   &kp N1   &kp N2   &kp N3   &kp SLASH   &trans
+                                      &trans                 &trans                  &trans          &trans      &trans   &trans
             >;
         };
 
