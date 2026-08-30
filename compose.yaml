@@ -8,7 +8,7 @@ services:
       - zmk-workspace:/workspaces
       - ./config:/workspaces/config:ro
       - ./:/modules/user-config:ro
-      - ./firmware:/output
+      - ./build:/output
     command:
       - /bin/sh
       - -ec
