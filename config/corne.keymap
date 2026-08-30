@@ -93,31 +93,10 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_left_brace {
+        combo_equals {
             timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_E POS_D>;
-            bindings = <&kp LEFT_BRACE>;
-            layers = <BASE>;
-        };
-
-        combo_right_brace {
-            timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_R POS_F>;
-            bindings = <&kp RIGHT_BRACE>;
-            layers = <BASE>;
-        };
-
-        combo_left_paren {
-            timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_D POS_C>;
-            bindings = <&kp LEFT_PARENTHESIS>;
-            layers = <BASE>;
-        };
-
-        combo_right_paren {
-            timeout-ms = <COMBO_TIMEOUT>;
-            key-positions = <POS_F POS_V>;
-            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <POS_C POS_V>;
+            bindings = <&kp EQUAL>;
             layers = <BASE>;
         };
 
